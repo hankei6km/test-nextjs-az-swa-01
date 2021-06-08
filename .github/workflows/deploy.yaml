@@ -4,7 +4,7 @@ on:
     branches:
       - main
   repository_dispatch:
-    # types: [opened, deleted]
+    types: [ghp_az-swa]
 
 jobs:
 
