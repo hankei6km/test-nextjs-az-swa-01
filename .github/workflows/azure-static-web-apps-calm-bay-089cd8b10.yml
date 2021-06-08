@@ -36,6 +36,8 @@ jobs:
         env:
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
           GET_API_KEY: ${{ secrets.GET_API_KEY }}
+          PREVIEW_SECRET: ${{ secrets.PREVIEW_SECRET }}
+          ASSET_PREFIX: "/"
 
 
   close_pull_request_job:
