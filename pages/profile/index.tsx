@@ -1,60 +1,35 @@
+import { useEffect } from 'react';
 import { GetStaticProps } from 'next';
-import { makeStyles } from '@material-ui/core/styles';
+import { useRouter } from 'next/router';
+import useSWR from 'swr';
 import Layout from '../../components/Layout';
-import SectionList from '../../components/SectionList';
 import { PageData } from '../../types/pageTypes';
 import { getPagesPageData } from '../../lib/pages';
-import siteConfig from '../../src/site.config';
-import { wrapStyle } from '../../utils/classes';
 import PageContext from '../../components/PageContext';
 
-const useStyles = makeStyles(() => ({
-  pageMain: {
-    ...wrapStyle(`& .${siteConfig.iamgeConfig.contentImageClassName}`, {
-      maxWidth: '100%',
-      objectFit: 'contain'
-    })
-  },
-  'SectionItem-root': {},
-  'SectionItem-title': {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center'
-  }
-}));
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const pagePath: string[] = [];
-
-const PostsPage = ({ pageData }: { pageData: PageData }) => {
-  const classes = useStyles();
+const ProfilePage = ({ pageData }: { pageData: PageData }) => {
+  const router = useRouter();
+  const { data } = useSWR(`/.auth/me`, fetcher);
+  useEffect(() => {
+    if (data === undefined) {
+      router.push('/.auth/login');
+    }
+  }, [router, data]);
   return (
     <PageContext.Provider value={pageData}>
       <Layout pageData={pageData}>
-        <SectionList
-          sections={[
-            {
-              title: '',
-              content: [
-                {
-                  kind: 'partsNavPagination',
-                  // section 側で展開した場合、取得できない情報が含まれている.
-                  // コンテンツ側で parts 指定することにした場合扱えないので注意
-                  href: '/posts/page/[..id]',
-                  baseAs: '/posts/page',
-                  pagePath: pagePath,
-                  firstPageHref: '/posts'
-                }
-              ]
-            }
-          ]}
-          classes={{ ...classes }}
-        />
+        <section>
+          <h3>User Principal</h3>
+          <p>{JSON.stringify(data)}</p>
+        </section>
       </Layout>
     </PageContext.Provider>
   );
 };
 
-export default PostsPage;
+export default ProfilePage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const id = 'profile';

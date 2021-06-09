@@ -3,6 +3,23 @@
     {
       "route": "/profile",
       "allowedRoles": ["authenticated"]
-    }
+    },
+    {
+      "route": "/login",
+      "rewrite": "/.auth/login"
+    },
+    {
+      "route": "/logout",
+      "redirect": "/.auth/logout"
+    },
+    "responseOverrides": {
+      "401": {
+        "redirect": "/login",
+        "statusCode": 302
+      },
+    },
+    "globalHeaders": {
+      "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+    },
   ]
 }

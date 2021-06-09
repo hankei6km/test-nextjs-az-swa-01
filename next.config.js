@@ -48,9 +48,9 @@ module.exports = (phase) => {
   }
   const assetPrefix = _assetPrefix;
   // util/baseUrl.ts 内で baseUrl を独自に設定しているので注意
-  let basePath = ''
+  let basePath = '';
   if (assetPrefix && assetPrefix !== '/') {
-    basePath = assetPrefix
+    basePath = assetPrefix;
   }
 
   console.log(`assetPrefix:${assetPrefix}`);
