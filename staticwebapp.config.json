@@ -6,7 +6,7 @@
     },
     {
       "route": "/login",
-      "rewrite": "/.auth/login"
+      "rewrite": "/.auth/login/github"
     },
     {
       "route": "/logout",

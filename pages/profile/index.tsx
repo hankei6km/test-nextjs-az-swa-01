@@ -14,7 +14,7 @@ const ProfilePage = ({ pageData }: { pageData: PageData }) => {
   const { data } = useSWR(`/.auth/me`, fetcher);
   useEffect(() => {
     if (data === undefined) {
-      router.push('/.auth/login');
+      router.push('/.auth/login/github');
     }
   }, [router, data]);
   return (
