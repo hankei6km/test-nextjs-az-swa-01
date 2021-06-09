@@ -13,6 +13,7 @@ const breakpoints = createBreakpoints({});
 // Create a theme instance.
 const theme = createMuiTheme({
   palette: {
+    type: 'dark',
     primary: {
       light: '#3b4b95',
       main: '#556cd6',
@@ -27,7 +28,8 @@ const theme = createMuiTheme({
       main: red.A400
     },
     background: {
-      default: '#fff'
+      // default: '#fff'
+      default: '#303030'
     }
   },
   overrides: {
