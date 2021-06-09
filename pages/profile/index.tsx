@@ -23,7 +23,6 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const itemsPerPage = 10;
 const pagePath: string[] = [];
 
 const PostsPage = ({ pageData }: { pageData: PageData }) => {
