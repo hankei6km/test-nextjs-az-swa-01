@@ -23,7 +23,7 @@ const ProfilePage = ({ pageData }: { pageData: PageData }) => {
         <section>
           <h3>User Principal</h3>
           {error && <p>error={JSON.stringify(error)}</p>}
-          {data.clientPrincipal && data.clientPrincipal.userDetails && (
+          {data && data.clientPrincipal && data.clientPrincipal.userDetails && (
             <p>Hello {data.clientPrincipal.userDetails}</p>
           )}
         </section>
