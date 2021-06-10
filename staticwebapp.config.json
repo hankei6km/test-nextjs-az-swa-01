@@ -2,7 +2,7 @@
   "routes": [
     {
       "route": "/profile",
-      "allowedRoles": ["authenticated"]
+      "allowedRoles": ["az_swa01_test"]
     },
     {
       "route": "/login",
