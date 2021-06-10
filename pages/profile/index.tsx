@@ -11,9 +11,10 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ProfilePage = ({ pageData }: { pageData: PageData }) => {
   const router = useRouter();
-  const { data } = useSWR(`/.auth/me`, fetcher);
+  const { data, error } = useSWR(`/.auth/me`, fetcher);
   useEffect(() => {
     console.log(data)
+    console.log(error)
     if (data === undefined) {
       // router.push('/.auth/login/github');
     }
