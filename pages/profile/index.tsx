@@ -13,7 +13,7 @@ const ProfilePage = ({ pageData }: { pageData: PageData }) => {
   const router = useRouter();
   const { data, error } = useSWR(`/.auth/me`, fetcher);
   useEffect(() => {
-    if (data && !data.clientPrincipal) {
+    if (data && data.clientPrincipal === null) {
       router.push('/.auth/login/github');
     }
   }, [router, data]);
