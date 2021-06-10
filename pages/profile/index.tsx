@@ -13,10 +13,8 @@ const ProfilePage = ({ pageData }: { pageData: PageData }) => {
   const router = useRouter();
   const { data, error } = useSWR(`/.auth/me`, fetcher);
   useEffect(() => {
-    console.log(data)
-    console.log(error)
-    if (data === undefined) {
-      // router.push('/.auth/login/github');
+    if (data && !data.clientPrincipal) {
+      router.push('/.auth/login/github');
     }
   }, [router, data]);
   return (
@@ -24,7 +22,10 @@ const ProfilePage = ({ pageData }: { pageData: PageData }) => {
       <Layout pageData={pageData}>
         <section>
           <h3>User Principal</h3>
-          <p>{JSON.stringify(data)}</p>
+          {error && <p>error={JSON.stringify(error)}</p>}
+          {data.clientPrincipal && data.clientPrincipal.userDetails && (
+            <p>Hello {data.clientPrincipal.userDetails}</p>
+          )}
         </section>
       </Layout>
     </PageContext.Provider>
