@@ -5,7 +5,7 @@
     "api:build": "aspida && aspida-mock",
     "dev": "aspida && aspida-mock && next",
     "build": "aspida && aspida-mock && next build",
-    "build:azure": "aspida && aspida-mock && next build && next export",
+    "build:azure": "next export",
     "export": "next export",
     "start": "aspida && aspida-mock && next start",
     "type-check": "tsc",
