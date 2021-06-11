@@ -55,6 +55,10 @@ const siteConfig: {
         href: '/posts'
       },
       {
+        label: 'Profile',
+        href: '/profile'
+      },
+      {
         label: 'About',
         href: '/about'
       }
@@ -64,6 +68,10 @@ const siteConfig: {
       '/posts': [
         { label: 'Home', href: '/' },
         { label: 'Blog', href: '/posts' }
+      ],
+      '/profile': [
+        { label: 'Home', href: '/' },
+        { label: 'Profile', href: '/profile' }
       ],
       '/about': [
         { label: 'Home', href: '/' },

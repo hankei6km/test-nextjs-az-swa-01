@@ -36,6 +36,7 @@
     "remark-rehype": "^8.0.0",
     "style-to-object": "^0.3.0",
     "sudachi-synonyms-dictionary": "^6.0.0",
+    "swr": "^0.5.6",
     "textlint": "^11.8.2",
     "textlint-filter-rule-allowlist": "^2.0.1",
     "textlint-filter-rule-node-types": "^1.1.0",
